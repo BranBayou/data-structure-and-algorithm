@@ -90,6 +90,49 @@ class LinkedList {
     }
     return false;
   }
+
+  insert(index, value) {
+    if(index === 0) return this.unshift(value);
+    if(index === this.length) return this.push(value);
+    if(index < 0 || index > this.length) return false;
+    const newNode = new Node(value);
+    const temp = this.get(index - 1);
+    newNode.next = temp.next;
+    temp.next = newNode;
+    this.length++;
+    return true;
+  }
+
+  remove(index) {
+    if(index === 0) return this.shift();
+    if(index === this.length) return this.pop();
+    if(index < 0 || index > this.length) return false;
+
+    const before = this.get(index - 1);
+    const temp = before.next;
+    before.next = temp.next;
+    temp.next = null;
+
+    this.length--;
+    return temp;
+  }
+
+  reverse() {
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+
+    let nxt = temp.next;
+    let prev = null;
+
+    for(let i = 0; i < this.length; i++) {
+      nxt = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = nxt;
+    }
+    return this;
+  }
 }
 let myLinkedList = new LinkedList(7);
 myLinkedList.push(4);
@@ -101,4 +144,7 @@ myLinkedList.shift();
 console.log(myLinkedList);
 console.log(myLinkedList.get(1));
 myLinkedList.set(0, 10);
+myLinkedList.insert(1, 5);
+myLinkedList.remove(0);
+myLinkedList.reverse();
 console.log(myLinkedList);
