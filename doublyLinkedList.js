@@ -73,11 +73,39 @@ class DoublyLinkedList {
     this.length--;
     return temp;
   }
+
+  get(index) {
+    if(index < 0 || index >= this.length) return undefined;
+    let temp = this.head;
+    if(index < this.length/2) {
+      for(let i = index; i < index; i++) {
+        temp = temp.next;
+      }
+    } else {
+      let temp = this.tail;
+      for(let i = this.length-1; i > index; i--) {
+        temp = temp.prev;
+      }
+    }
+    return temp;
+  }
+
+  set(index, value) {
+    let temp = this.get(index);
+    if(temp) {
+      temp.value = value;
+      return true;
+    }
+    return false;
+  }
+
+  
 }
 let myDoublyLinkedList = new DoublyLinkedList(1);
 myDoublyLinkedList.push(2);
 myDoublyLinkedList.pop();
 myDoublyLinkedList.unshift(0);
 myDoublyLinkedList.shift();
-
+console.log(myDoublyLinkedList.get(0));
+console.log(myDoublyLinkedList.set(0, 11));
 console.log(myDoublyLinkedList);
