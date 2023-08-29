@@ -134,7 +134,7 @@ class LinkedList {
     return this;
   }
 }
-let myLinkedList = new LinkedList(7);
+let myLinkedList = new LinkedList(1);
 myLinkedList.push(4);
 myLinkedList.push(11);
 myLinkedList.push(23);
