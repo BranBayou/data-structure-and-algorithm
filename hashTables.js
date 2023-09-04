@@ -12,7 +12,17 @@ class HashTable {
     }
     return hash;
   }
+
+  set(key, value) {
+    let index = this._hash(key); 
+    if(!this.dataMap[index]) this.dataMap[index] = [];
+    this.dataMap[index].push(key, value);
+    return this;
+  }
 }
 
 let myHashTable = new HashTable();
+myHashTable.set('lumber', 251);
+myHashTable.set('washers', 40);
+myHashTable.set('bolts', 1100);
 console.log(myHashTable);
