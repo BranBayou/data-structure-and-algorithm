@@ -17,3 +17,20 @@ function sum(number) {
 }
 
 console.log(sum(4));
+
+// Call stack 
+// the next code is not recursive, it's just to show how call stack works
+
+function function1() {
+  function2();
+  console.log('One');
+}
+function function2() {
+  function3();
+  console.log('Two');
+}
+function function3() {
+  console.log('Three');
+}
+function1();
+
