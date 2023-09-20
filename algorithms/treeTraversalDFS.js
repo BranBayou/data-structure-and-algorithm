@@ -74,7 +74,14 @@ class BST {
   }
 
   DFSPostOrder() {
-
+    let results = [];
+    function traverse(currentNode) {
+      if(currentNode.left) traverse(currentNode.left);
+      if(currentNode.right) traverse(currentNode.right);
+      results.push(currentNode.value);
+    }
+    traverse(this.root);
+    return results;
   }
 
   DFSInOrder() {
@@ -92,3 +99,4 @@ myBST.insert(27);
 console.log(myBST);
 console.log(myBST.contains(24));
 console.log(myBST.DFSPreOrder());
+console.log(myBST.DFSPostOrder());
