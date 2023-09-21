@@ -85,18 +85,29 @@ class BST {
   }
 
   DFSInOrder() {
-
+    let results = [];
+    function traverse(currentNode) {
+      if(currentNode.left) traverse(currentNode.left);
+      results.push(currentNode.value);
+      if(currentNode.right) traverse(currentNode.right);
+    }
+    traverse(this.root);
+    return results;
   }
 
 }
 
 let myBST = new BST();
-myBST.insert(30);
-myBST.insert(49);
-myBST.insert(23);
+myBST.insert(47);
+myBST.insert(21);
+myBST.insert(76);
+myBST.insert(18);
 myBST.insert(27);
+myBST.insert(52);
+myBST.insert(82);
 
 console.log(myBST);
 console.log(myBST.contains(24));
 console.log(myBST.DFSPreOrder());
 console.log(myBST.DFSPostOrder());
+console.log(myBST.DFSInOrder());
